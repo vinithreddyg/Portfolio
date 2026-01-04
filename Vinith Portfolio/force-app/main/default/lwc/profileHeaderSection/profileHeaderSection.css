@@ -1,0 +1,103 @@
+:host {
+  /* Themeable CSS variables */
+  --ph-gradient-start: #0ea5e9; /* sky-500 */
+  --ph-gradient-end: #8b5cf6;   /* violet-500 */
+  --ph-card-bg: rgba(255, 255, 255, 0.75);
+  --ph-card-border: rgba(255, 255, 255, 0.6);
+  --ph-text-color: #0b2942;
+
+  display: block;
+}
+
+/* Container with modern gradient background */
+.header-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem; /* 12px */
+  min-height: 160px;
+  padding: 1.25rem; /* aligns with slds-box padding scale */
+  background: linear-gradient(135deg, var(--ph-gradient-start), var(--ph-gradient-end));
+  isolation: isolate;
+}
+
+/* Decorative wave using mask for subtle depth */
+.header-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 200px at 100% 100%, rgba(255, 255, 255, 0.18), transparent 60%),
+    radial-gradient(800px 150px at 0% 100%, rgba(255, 255, 255, 0.12), transparent 60%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Floating blob decorations (subtle, performant) */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(18px);
+  opacity: 0.35;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  animation: float 16s ease-in-out infinite;
+  z-index: 0;
+}
+
+.blob.one {
+  width: 180px;
+  height: 180px;
+  top: -40px;
+  left: -30px;
+  background: rgba(255, 255, 255, 0.35);
+  animation-delay: 0s;
+}
+
+.blob.two {
+  width: 220px;
+  height: 220px;
+  bottom: -80px;
+  right: -40px;
+  background: rgba(255, 255, 255, 0.25);
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(8px, -10px) scale(1.03); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Glass card effect for content for readability on gradient */
+.header-card {
+  position: relative;
+  z-index: 2; /* above decorations */
+  background: var(--ph-card-bg);
+  border: 1px solid var(--ph-card-border);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 8px 24px rgba(2, 8, 20, 0.12);
+  color: var(--ph-text-color);
+  backdrop-filter: saturate(160%) blur(8px);
+  -webkit-backdrop-filter: saturate(160%) blur(8px);
+}
+
+/* Typography tweaks maintaining SLDS hierarchy */
+.header-title {
+  line-height: 1.2;
+}
+
+.header-subtitle {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .header-hero {
+    min-height: 140px;
+    padding: 1rem;
+  }
+  .blob.one { width: 140px; height: 140px; }
+  .blob.two { width: 160px; height: 160px; }
+}

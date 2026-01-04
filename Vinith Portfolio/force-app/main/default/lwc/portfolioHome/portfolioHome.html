@@ -1,67 +1,136 @@
 <template>
-    <section class="slds-card slds-p-around_large">
+    <!-- HERO -->
+    <section class="slds-card slds-p-around_xx-large hero hero--light">
         <div class="slds-grid slds-wrap slds-grid_vertical-align-center">
-            <div class="slds-col slds-size_1-of-1 slds-m-bottom_medium">
-                <h1 class="slds-text-heading_large slds-m-bottom_x-small">{title}</h1>
-                <p class="slds-text-body_regular slds-text-color_weak">{subtitle}</p>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+                <p class="slds-text-title_caps slds-text-color_weak slds-m-bottom_x-small">WELCOME</p>
+                <h1 class="slds-text-heading_large slds-m-bottom_small">{title}</h1>
+                <p class="slds-text-body_regular slds-m-bottom_medium hero__tagline">{subtitle}</p>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-grow-none">
+                        <lightning-button variant="brand" label="View Projects" onclick={handleScrollToProjects}></lightning-button>
+                    </div>
+                    <div class="slds-col slds-grow-none">
+                        <lightning-button variant="neutral" label="Contact Me" onclick={handleScrollToContact}></lightning-button>
+                    </div>
+                </div>
             </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-m-top_medium slds-align_absolute-center">
+                <div class="hero__badgeRow">
+                    <span class="badge badge--mongo">MongoDB</span>
+                    <span class="badge badge--express">Express</span>
+                    <span class="badge badge--react">React</span>
+                    <span class="badge badge--node">Node</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <template if:true={hasAnySection}>
-                <template if:true={showVinith}>
-                    <div class="slds-col slds-size_1-of-1 slds-m-bottom_medium">
-                        <div class="slds-box">
-                            <h2 class="slds-text-heading_medium slds-m-bottom_small">Vinith Reddy Gaddam</h2>
-                            <p class="slds-text-body_regular">Senior Salesforce Consultant | Agentforce Enthusiast | Salesforce Certified</p>
-                            <lightning-button
-                                variant="brand"
-                                label="Primary Action"
-                                name="primary"
-                                onclick={handleAction}>
-                            </lightning-button>
+    <!-- ABOUT -->
+    <template if:true={showAbout}>
+        <section class="slds-p-around_large section">
+            <div class="slds-box slds-theme_default slds-p-around_large">
+                <h2 class="slds-text-heading_medium slds-m-bottom_small">About</h2>
+                <p class="slds-text-body_regular">
+                    I am a Senior Salesforce Developer with 6+ years of hands-on experience building scalable, secure, and high-performance Salesforce solutions in enterprise environments. My core strength lies in designing well-architected solutions that balance declarative and programmatic approaches while strictly adhering to Salesforce best practices and governor limits.
+                </p>
+                <p class="slds-text-body_regular slds-m-top_small">
+                    I have deep expertise in Apex, Lightning Web Components (LWC), Lightning Aura, and Salesforce Flows, along with strong experience in Salesforce security, data modeling, and performance optimization. I am highly skilled in building and consuming REST and SOAP integrations, implementing asynchronous processing (Batch, Queueable, Future, Platform Events), and handling large data volumes efficiently.
+                </p>
+                <p class="slds-text-body_regular slds-m-top_small">
+                    I am well-versed in Salesforce DevOps and CI/CD practices, including Git-based version control, SFDX, Copado, Jenkins, and automated deployments. I work comfortably in Agile/Scrum environments, actively participating in design discussions, code reviews, and release planning to ensure high-quality and maintainable solutions.
+                </p>
+                <p class="slds-text-body_regular slds-m-top_small">
+                    In addition to strong technical skills, I bring a collaborative mindset and leadership approach—providing technical guidance, mentoring junior developers, and enforcing consistent coding standards across teams. I focus on building solutions that are scalable, reusable, testable, and aligned with long-term business goals.
+                </p>
+                <p class="slds-text-body_regular slds-m-top_small">
+                    I continuously upskill in emerging Salesforce capabilities, including AI-driven automation and Agentforce, to stay current with the evolving Salesforce ecosystem and deliver future-ready solutions.
+                </p>
+            </div>
+        </section>
+    </template>
+
+    <!-- SKILLS -->
+    <template if:true={showSkills}>
+        <section class="slds-p-around_large section">
+            <div class="slds-box slds-theme_default slds-p-around_large">
+                <div class="slds-grid slds-wrap slds-grid_align-spread slds-m-bottom_small">
+                    <h2 class="slds-text-heading_medium">Skills</h2>
+                    <div class="hero__badgeRow slds-m-top_x-small slds-hide_small">
+                        <span class="badge badge--mongo">MongoDB</span>
+                        <span class="badge badge--express">Express</span>
+                        <span class="badge badge--react">React</span>
+                        <span class="badge badge--node">Node</span>
+                    </div>
+                </div>
+                <ul class="slds-list_horizontal slds-has-dividers_right slds-wrap">
+                    <template for:each={skills} for:item="skill">
+                        <li key={skill} class="slds-item slds-m-right_medium slds-m-bottom_x-small">
+                            <span class="chip">{skill}</span>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </section>
+    </template>
+
+    <!-- PROJECTS -->
+    <template if:true={showProjects}>
+        <section id="projects" class="slds-p-around_large section">
+            <h2 class="slds-text-heading_medium slds-m-bottom_small">Projects</h2>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small">
+                    <div class="card">
+                        <div class="card__header">
+                            <span class="badge badge--react">LWC</span>
+                        </div>
+                        <div class="card__body">
+                            <h3 class="slds-text-heading_small slds-m-bottom_x-small">Portfolio Site</h3>
+                            <p class="slds-text-body_small">A Salesforce LWC-based portfolio with MERN-inspired UI built on SLDS.</p>
+                        </div>
+                        <div class="card__footer">
+                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open"></lightning-button-icon>
                         </div>
                     </div>
-                </template>
-
-                <template if:true={showAbout}>
-                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-right_medium">
-                        <div class="slds-box slds-m-bottom_medium">
-                            <h2 class="slds-text-heading_medium slds-m-bottom_small">About</h2>
-                            <!-- add below paragraph format and use good Ui -->
-                            <p class="slds-text-body_regular">I am a Senior Salesforce Developer with 6+ years of hands-on experience building scalable, secure, and high-performance Salesforce solutions in enterprise environments. My core strength lies in designing well-architected solutions that balance declarative and programmatic approaches while strictly adhering to Salesforce best practices and governor limits.
-
-I have deep expertise in Apex, Lightning Web Components (LWC), Lightning Aura, and Salesforce Flows, along with strong experience in Salesforce security, data modeling, and performance optimization. I am highly skilled in building and consuming REST and SOAP integrations, implementing asynchronous processing (Batch, Queueable, Future, Platform Events), and handling large data volumes efficiently.
-
-I am well-versed in Salesforce DevOps and CI/CD practices, including Git-based version control, SFDX, Copado, Jenkins, and automated deployments. I work comfortably in Agile/Scrum environments, actively participating in design discussions, code reviews, and release planning to ensure high-quality and maintainable solutions.
-
-In addition to strong technical skills, I bring a collaborative mindset and leadership approach—providing technical guidance, mentoring junior developers, and enforcing consistent coding standards across teams. I focus on building solutions that are scalable, reusable, testable, and aligned with long-term business goals.
-
-I continuously upskill in emerging Salesforce capabilities, including AI-driven automation and Agentforce, to stay current with the evolving Salesforce ecosystem and deliver future-ready solutions.</p>
+                </article>
+                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small">
+                    <div class="card">
+                        <div class="card__header">
+                            <span class="badge badge--node">Apex</span>
+                        </div>
+                        <div class="card__body">
+                            <h3 class="slds-text-heading_small slds-m-bottom_x-small">Apex Integrations</h3>
+                            <p class="slds-text-body_small">Robust REST integrations using Queueables and Platform Events.</p>
+                        </div>
+                        <div class="card__footer">
+                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open"></lightning-button-icon>
                         </div>
                     </div>
-                </template>
-
-                <template if:true={showSkills}>
-                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-left_medium">
-                        <div class="slds-box slds-m-bottom_medium">
-                            <h2 class="slds-text-heading_medium slds-m-bottom_small">Skills</h2>
-                            <ul class="slds-list_dotted">
-                                <template for:each={skills} for:item="skill">
-                                    <li key={skill}>{skill}</li>
-                                </template>
-                            </ul>
+                </article>
+                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small">
+                    <div class="card">
+                        <div class="card__header">
+                            <span class="badge badge--mongo">DevOps</span>
+                        </div>
+                        <div class="card__body">
+                            <h3 class="slds-text-heading_small slds-m-bottom_x-small">CI/CD Pipeline</h3>
+                            <p class="slds-text-body_small">Git-based workflow with automated deployments and quality gates.</p>
+                        </div>
+                        <div class="card__footer">
+                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open"></lightning-button-icon>
                         </div>
                     </div>
-                </template>
+                </article>
+            </div>
+        </section>
+    </template>
 
-                <template if:true={showProjects}>
-                    <div class="slds-col slds-size_1-of-1">
-                        <div class="slds-box slds-m-bottom_medium">
-                            <h2 class="slds-text-heading_medium slds-m-bottom_small">Projects</h2>
-                            <p class="slds-text-body_regular">Highlight a few key projects.</p>
-                        </div>
-                    </div>
-                </template>
-            </template>
+    <!-- CONTACT -->
+    <section id="contact" class="slds-p-around_large section slds-m-bottom_xx-large">
+        <div class="cta slds-p-around_large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_small">Let’s work together</h2>
+            <p class="slds-text-body_regular slds-m-bottom_medium">Have a project or role in mind? I’m open to opportunities.</p>
+            <lightning-button variant="brand-outline" label="Contact Me" onclick={handleScrollToContact}></lightning-button>
         </div>
     </section>
 </template>
