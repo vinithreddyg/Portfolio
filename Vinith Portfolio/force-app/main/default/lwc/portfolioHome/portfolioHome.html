@@ -1,0 +1,58 @@
+<template>
+    <section class="slds-card slds-p-around_large">
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-1 slds-m-bottom_medium">
+                <h1 class="slds-text-heading_large slds-m-bottom_x-small">{title}</h1>
+                <p class="slds-text-body_regular slds-text-color_weak">{subtitle}</p>
+            </div>
+
+            <template if:true={hasAnySection}>
+                <template if:true={showHero}>
+                    <div class="slds-col slds-size_1-of-1 slds-m-bottom_medium">
+                        <div class="slds-box">
+                            <h2 class="slds-text-heading_medium slds-m-bottom_small">Hero</h2>
+                            <p class="slds-text-body_regular">Your name, title, and a short tagline go here.</p>
+                            <lightning-button
+                                variant="brand"
+                                label="Primary Action"
+                                name="primary"
+                                onclick={handleAction}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={showAbout}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-right_medium">
+                        <div class="slds-box slds-m-bottom_medium">
+                            <h2 class="slds-text-heading_medium slds-m-bottom_small">About</h2>
+                            <p class="slds-text-body_regular">Brief introduction and background.</p>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={showSkills}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-left_medium">
+                        <div class="slds-box slds-m-bottom_medium">
+                            <h2 class="slds-text-heading_medium slds-m-bottom_small">Skills</h2>
+                            <ul class="slds-list_dotted">
+                                <template for:each={skills} for:item="skill">
+                                    <li key={skill}>{skill}</li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={showProjects}>
+                    <div class="slds-col slds-size_1-of-1">
+                        <div class="slds-box slds-m-bottom_medium">
+                            <h2 class="slds-text-heading_medium slds-m-bottom_small">Projects</h2>
+                            <p class="slds-text-body_regular">Highlight a few key projects.</p>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </section>
+</template>
