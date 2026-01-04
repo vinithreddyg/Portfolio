@@ -2,10 +2,10 @@ import { LightningElement, api, track } from 'lwc';
 
 /**
  * Portfolio Home
- * 
+ *
  * Usage: <c-portfolio-home></c-portfolio-home>
  * Targets: App Builder (Home/Record/App), optional Flow screen-ready inputs
- * 
+ *
  * Follows SLDS and LWC best practices. Replace placeholder content as needed.
  */
 export default class PortfolioHome extends LightningElement {
@@ -18,28 +18,39 @@ export default class PortfolioHome extends LightningElement {
     @api showProjects = false;
 
     // Example reactive state
-    @track skills = ['Salesforce', 'LWC', 'Apex'];
+    @track skills = ['Salesforce', 'LWC', 'Apex', 'Apex Triggers', 'SOQL', 'Integration', 'CI/CD'];
+
+    connectedCallback() {
+        // Default visible sections for demo
+        this.showVinith = true;
+        this.showAbout = true;
+        this.showSkills = true;
+        this.showProjects = true;
+    }
 
     // Computed helpers
     get hasAnySection() {
-       this.showVinith = true;
-       this.showAbout = true;
-       this.showSkills = true;
-       this.showProjects = true;
-
         return this.showVinith || this.showAbout || this.showSkills || this.showProjects;
     }
 
-    // Handlers scaffold
-    handleAction(event) {
-        // Placeholder for future actions (navigate, open modal, etc.)
-        // eslint-disable-next-line no-unused-vars
-        const { name } = event.target;
+    // Smooth scroll helpers
+    handleScrollToProjects() {
+        const el = this.template.querySelector('#projects');
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    handleScrollToContact() {
+        const el = this.template.querySelector('#contact');
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 
     // Public method example to refresh/reload content later
     @api
     refresh() {
-        // Add logic to reload data if needed
+        // Placeholder for future data reload
     }
 }
