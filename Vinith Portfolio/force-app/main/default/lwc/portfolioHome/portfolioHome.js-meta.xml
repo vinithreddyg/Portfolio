@@ -14,7 +14,7 @@
         <targetConfig targets="lightning__FlowScreen">
             <property name="title" type="String" label="Title" description="Heading text for the component."/>
             <property name="subtitle" type="String" label="Subtitle" description="Subtitle text under the heading."/>
-            <property name="showHero" type="Boolean" label="Show Hero section" default="true"/>
+            <property name="showVinith" type="Boolean" label="Show Hero section" default="true"/>
             <property name="showAbout" type="Boolean" label="Show About section" default="true"/>
             <property name="showSkills" type="Boolean" label="Show Skills section" default="true"/>
             <property name="showProjects" type="Boolean" label="Show Projects section" default="true"/>
@@ -22,7 +22,7 @@
         <targetConfig targets="lightning__AppPage,lightning__RecordPage,lightning__HomePage">
             <property name="title" type="String" label="Title" description="Heading text for the component."/>
             <property name="subtitle" type="String" label="Subtitle" description="Subtitle text under the heading."/>
-            <property name="showHero" type="Boolean" label="Show Hero section" default="true"/>
+            <property name="showVinith" type="Boolean" label="Show Hero section" default="true"/>
             <property name="showAbout" type="Boolean" label="Show About section" default="true"/>
             <property name="showSkills" type="Boolean" label="Show Skills section" default="true"/>
             <property name="showProjects" type="Boolean" label="Show Projects section" default="true"/>

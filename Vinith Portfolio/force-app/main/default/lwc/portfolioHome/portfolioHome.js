@@ -10,9 +10,9 @@ import { LightningElement, api, track } from 'lwc';
  */
 export default class PortfolioHome extends LightningElement {
     // Public API properties to allow configuration from App Builder / (optional) Flow
-    @api title = 'Portfolio Home';
-    @api subtitle = 'Welcome to the portfolio home component';
-    @api showHero = false;
+    @api title = 'Vinith Portfolio';
+    @api subtitle = 'Welcome to my professional portfolio!';
+    @api showVinith = false;
     @api showAbout = false;
     @api showSkills = false;
     @api showProjects = false;
@@ -22,12 +22,12 @@ export default class PortfolioHome extends LightningElement {
 
     // Computed helpers
     get hasAnySection() {
-       this.showHero = true;
+       this.showVinith = true;
        this.showAbout = true;
        this.showSkills = true;
        this.showProjects = true;
 
-        return this.showHero || this.showAbout || this.showSkills || this.showProjects;
+        return this.showVinith || this.showAbout || this.showSkills || this.showProjects;
     }
 
     // Handlers scaffold
