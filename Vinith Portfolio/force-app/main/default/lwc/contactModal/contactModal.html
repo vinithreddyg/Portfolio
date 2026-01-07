@@ -1,31 +1,41 @@
 <template>
     <template if:true={isOpen}>
-        <div class="slds-modal__overlay slds-fade-in-open animate-on-scroll" data-animation="fade-up">
-            <div class="slds-modal slds-modal_medium animate-on-scroll" data-animation="fade-up" role="dialog" tabindex="-1">
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="contact-modal-heading" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
                 <header class="slds-modal__header">
-                    <h2 class="slds-text-heading_medium">Contact Information</h2>
-                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse animate-on-scroll" data-animation="fade-down" onclick={handleClose}>
+                    <h2 id="contact-modal-heading" class="slds-text-heading_medium">Contact Information</h2>
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={handleClose}>
                         <lightning-icon icon-name="utility:close" size="small" alternative-text="Close"></lightning-icon>
                         <span class="slds-assistive-text">Close</span>
                     </button>
                 </header>
-                <div class="slds-modal__body">
+                <div class="slds-modal__content slds-p-around_medium" id="contact-modal-content">
                     <div class="slds-grid slds-gutters slds-wrap">
-                        <div class="slds-col slds-size_1-of-1 slds-p-around_small animate-on-scroll" data-animation="fade-up" data-delay="0.1s">
-                            <lightning-icon icon-name="utility:phone" size="large" alternative-text="Phone" class="slds-icon-text-default slds-m-right_small pulse"></lightning-icon>
-                            <span class="slds-text-body_medium">{phoneNumber}</span>
+                        <div class="slds-col slds-size_1-of-1 slds-p-around_small slds-grid slds-grid_vertical-align-center">
+<lightning-button-icon
+                                icon-name="utility:call"
+                                alternative-text="Call"
+                                title="Call"
+                                onclick={handleClose}
+                                class="slds-m-left_small"
+                                variant="bare"
+                            ></lightning-button-icon>
+<a href="tel:{phoneNumber}" class="slds-text-body_medium slds-m-left_small" title="Call {phoneNumber}">
+                                {phoneNumber}
+                            </a>
+                            
                         </div>
-                        <div class="slds-col slds-size_1-of-1 slds-p-around_small animate-on-scroll" data-animation="fade-up" data-delay="0.2s">
+                        <div class="slds-col slds-size_1-of-1 slds-p-around_small">
                             <lightning-icon icon-name="utility:email" size="large" alternative-text="Email" class="slds-icon-text-default slds-m-right_small pulse"></lightning-icon>
                             <span class="slds-text-body_medium">{emailAddress}</span>
                         </div>
                     </div>
                 </div>
                 <footer class="slds-modal__footer">
-                    <lightning-button label="Close" variant="neutral" onclick={handleClose} class="animate-on-scroll" data-animation="fade-up" data-delay="0.3s"></lightning-button>
+                    <lightning-button label="Close" variant="neutral" onclick={handleClose}></lightning-button>
                 </footer>
             </div>
-        </div>
+        </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
 </template>

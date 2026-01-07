@@ -1,38 +1,124 @@
 :host {
+    /* Theme variables for easy color changes */
+    --modal-accent: #5b6cff;         /* primary accent color */
+    --modal-accent-strong: #3b49ff;  /* darker shade for hover/gradients */
+    --modal-bg: #0b1020;             /* dark background for modal */
+    --modal-surface: #121833;        /* card surface */
+    --modal-text: #e6e9ff;           /* text color */
+    --modal-muted: #9aa3c7;          /* muted text */
+    --modal-backdrop: rgba(11, 16, 32, 0.75);
+
     display: block;
 }
 
-/* Enhanced modal styling with animations */
-.slds-modal__overlay {
-    z-index: 9999;
-    animation: fadeIn 0.3s ease-out;
-}
-
+/* Backdrop elevation */
 .slds-backdrop {
     z-index: 9998;
+    background: var(--modal-backdrop);
+    backdrop-filter: blur(2px);
 }
 
-/* Add hover effects to modal elements */
+/* Modal container + 3D pop animation */
 .slds-modal {
-    animation: slideIn 0.3s ease-out;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border-radius: 0.5rem;
+    z-index: 9999;
+    animation: popIn 300ms cubic-bezier(.2,.8,.2,1);
 }
 
-/* Modal header with enhanced styling */
+.slds-modal__container {
+    background: linear-gradient(180deg, var(--modal-surface), #0f1530 80%);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(255,255,255,0.04) inset;
+    transform: translateZ(0); /* enable GPU */
+}
+
+/* Header with accent border and glow underline */
 .slds-modal__header {
-    border-bottom: 1px solid #e5e7eb;
-    padding: 1rem 1.5rem 0.5rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem 1.5rem 0.75rem;
     position: relative;
+}
+
+.slds-modal__header::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--modal-accent), transparent);
+    opacity: 0.6;
 }
 
 .slds-modal__header h2 {
     margin: 0;
+    color: var(--modal-text);
 }
 
-/* Close button enhancement */
+/* Content area with subtle grid background */
+.slds-modal__content {
+    color: var(--modal-text);
+    background:
+        radial-gradient(1200px 400px at 100% -10%, rgba(91,108,255,0.12), transparent 60%),
+        radial-gradient(800px 300px at -10% 110%, rgba(59,73,255,0.12), transparent 60%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px);
+}
+
+.slds-text-body_medium {
+    color: var(--modal-text);
+}
+
+.slds-text-body_small,
+.slds-text-color_weak {
+    color: var(--modal-muted);
+}
+
+/* Row hover lift */
+.slds-col.slds-p-around_small {
+    transition: transform 150ms ease, background 200ms ease, box-shadow 200ms ease;
+    border-radius: 10px;
+}
+
+.slds-col.slds-p-around_small:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.04);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15) inset;
+}
+
+/* Footer with gradient divider */
+.slds-modal__footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+/* Icon pulse with subtle glow tied to accent */
+.pulse {
+    animation: pulse 2s infinite;
+    filter: drop-shadow(0 0 6px rgba(91,108,255,0.35));
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(91,108,255,0.2)); }
+    50% { transform: scale(1.07); filter: drop-shadow(0 0 10px rgba(91,108,255,0.5)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(91,108,255,0.2)); }
+}
+
+/* Entrance animation */
+@keyframes popIn {
+    0% { transform: translateY(16px) scale(0.98); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Close button micro-interaction */
 .slds-modal__close {
-    transition: all 0.2s ease;
+    transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
     border-radius: 50%;
     width: 2rem;
     height: 2rem;
@@ -42,75 +128,23 @@
 }
 
 .slds-modal__close:hover {
-    background: #f4f6f9;
-    transform: rotate(90deg);
+    background: rgba(255,255,255,0.08);
+    transform: rotate(90deg) scale(1.05);
+    box-shadow: 0 0 0 2px rgba(91,108,255,0.35) inset;
 }
 
-/* Modal body styling */
-.slds-modal__body {
-    padding: 1.5rem;
+/* Buttons with accent outline feel (base Lightning applies actual styles) */
+lightning-button {
+    --lwc-brandAccessible: var(--modal-accent);
 }
 
-/* Modal footer styling */
-.slds-modal__footer {
-    padding: 1rem 1.5rem;
-    border-top: 1px solid #e5e7eb;
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
+lightning-button:hover {
+    transform: translateY(-1px);
+    transition: transform 120ms ease, box-shadow 200ms ease;
+    box-shadow: 0 6px 18px rgba(91,108,255,0.25);
 }
 
-/* Add pulse animation to icons */
-.pulse {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Slide in animation */
-@keyframes slideIn {
-    from { transform: translateY(-50px) scale(0.95); opacity: 0; }
-    to { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-/* Fade down animation for close button */
-@keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Enhanced button styling */
-.lightning-button {
-    transition: all 0.2s ease;
-}
-
-.lightning-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Add subtle hover effect to modal content */
-.slds-modal__body:hover {
-    background: #f9fafb;
-}
-
-/* Add focus ring for accessibility */
-.slds-modal__close:focus {
-    outline: 2px solid #0070d2;
-    outline-offset: 2px;
-}
-
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
     .slds-modal {
         margin: 1rem;

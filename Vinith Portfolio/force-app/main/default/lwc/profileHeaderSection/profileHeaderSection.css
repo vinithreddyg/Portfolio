@@ -1,103 +1,234 @@
 :host {
-  /* Themeable CSS variables */
-  --ph-gradient-start: #0ea5e9; /* sky-500 */
-  --ph-gradient-end: #8b5cf6;   /* violet-500 */
-  --ph-card-bg: rgba(255, 255, 255, 0.75);
-  --ph-card-border: rgba(255, 255, 255, 0.6);
-  --ph-text-color: #0b2942;
-
   display: block;
+  background: #ffffff;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-/* Container with modern gradient background */
-.header-hero {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.75rem; /* 12px */
-  min-height: 160px;
-  padding: 1.25rem; /* aligns with slds-box padding scale */
-  background: linear-gradient(135deg, var(--ph-gradient-start), var(--ph-gradient-end));
-  isolation: isolate;
+/* NAVBAR */
+.navbar {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
 }
 
-/* Decorative wave using mask for subtle depth */
-.header-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(1200px 200px at 100% 100%, rgba(255, 255, 255, 0.18), transparent 60%),
-    radial-gradient(800px 150px at 0% 100%, rgba(255, 255, 255, 0.12), transparent 60%);
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-  z-index: 1;
+/* LEFT SECTION */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-/* Floating blob decorations (subtle, performant) */
-.blob {
-  position: absolute;
+.logo-circle {
+  width: 44px;
+  height: 44px;
+  background: #8f2cff;
+  color: #ffffff;
   border-radius: 50%;
-  filter: blur(18px);
-  opacity: 0.35;
-  transform: translateZ(0);
-  will-change: transform, opacity;
-  animation: float 16s ease-in-out infinite;
-  z-index: 0;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.blob.one {
-  width: 180px;
-  height: 180px;
-  top: -40px;
-  left: -30px;
-  background: rgba(255, 255, 255, 0.35);
-  animation-delay: 0s;
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0b0b0b;
 }
 
-.blob.two {
-  width: 220px;
-  height: 220px;
-  bottom: -80px;
-  right: -40px;
-  background: rgba(255, 255, 255, 0.25);
-  animation-delay: 4s;
+/* CENTER NAV */
+.nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
 }
 
-@keyframes float {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(8px, -10px) scale(1.03); }
-  100% { transform: translate(0, 0) scale(1); }
+.nav a {
+  text-decoration: none;
+  color: #0b0b0b;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-/* Glass card effect for content for readability on gradient */
-.header-card {
-  position: relative;
-  z-index: 2; /* above decorations */
-  background: var(--ph-card-bg);
-  border: 1px solid var(--ph-card-border);
-  border-radius: 0.75rem;
-  padding: 1rem 1.25rem;
-  box-shadow: 0 8px 24px rgba(2, 8, 20, 0.12);
-  color: var(--ph-text-color);
-  backdrop-filter: saturate(160%) blur(8px);
-  -webkit-backdrop-filter: saturate(160%) blur(8px);
+.nav a:hover {
+  color: #8f2cff;
 }
 
-/* Typography tweaks maintaining SLDS hierarchy */
-.header-title {
+/* RIGHT CONTACT BUTTON */
+.contact-btn {
+  padding: 14px 28px;
+  background: #8f2cff;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(143, 44, 255, 0.35);
+  transition: all 0.2s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(143, 44, 255, 0.45);
+}
+
+/* HERO SECTION */
+.hero {
+  display: flex;
+  min-height: 600px;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* LEFT CONTENT */
+.content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.content h1 {
+  font-size: 48px;
   line-height: 1.2;
+  margin-bottom: 24px;
+  color: #0b0b0b;
 }
 
-.header-subtitle {
-  opacity: 0.9;
+.content h1 span {
+  color: #8f2cff;
+}
+
+.content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333333;
+  margin-bottom: 32px;
+}
+
+.highlight {
+  color: #8f2cff;
+  font-weight: 700;
+}
+
+/* CALL TO ACTION BUTTON */
+.cta {
+  padding: 16px 32px;
+  background: #8f2cff;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 25px rgba(143, 44, 255, 0.35);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(143, 44, 255, 0.45);
+}
+
+/* RIGHT IMAGE CARD */
+.image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .image-card {
+  width: 350px;
+  height: 400px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #f4f9fd 0%,
+    #eef5fb 100%
+  ); /* Changed to match user's requested gradient */
+  /* background-size: cover;
+  background-position: center;
+} */ 
+
+.image-card {
+  width: 350px;
+  height: 400px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #e4edf5;
+}
+
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
-  .header-hero {
-    min-height: 140px;
-    padding: 1rem;
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+    height: 76px;
   }
-  .blob.one { width: 140px; height: 140px; }
-  .blob.two { width: 160px; height: 160px; }
+  .nav {
+    gap: 16px;
+  }
+  .name {
+    font-size: 22px;
+  }
+  .logo-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  .contact-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  
+  /* Mobile responsive for hero section */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    min-height: auto;
+  }
+  
+  .content {
+    max-width: 100%;
+  }
+  
+  .content h1 {
+    font-size: 36px;
+  }
+  
+  .content p {
+    font-size: 16px;
+  }
+  
+  .image-wrapper {
+    margin-top: 30px;
+  }
+  
+  .image-card {
+    width: 250px;
+    height: 300px;
+    font-size: 18px;
+  }
 }
