@@ -1,0 +1,119 @@
+:host {
+    display: block;
+}
+
+/* Enhanced modal styling with animations */
+.slds-modal__overlay {
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.slds-backdrop {
+    z-index: 9998;
+}
+
+/* Add hover effects to modal elements */
+.slds-modal {
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-radius: 0.5rem;
+}
+
+/* Modal header with enhanced styling */
+.slds-modal__header {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 1.5rem 0.5rem;
+    position: relative;
+}
+
+.slds-modal__header h2 {
+    margin: 0;
+}
+
+/* Close button enhancement */
+.slds-modal__close {
+    transition: all 0.2s ease;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slds-modal__close:hover {
+    background: #f4f6f9;
+    transform: rotate(90deg);
+}
+
+/* Modal body styling */
+.slds-modal__body {
+    padding: 1.5rem;
+}
+
+/* Modal footer styling */
+.slds-modal__footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+/* Add pulse animation to icons */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Slide in animation */
+@keyframes slideIn {
+    from { transform: translateY(-50px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Fade down animation for close button */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhanced button styling */
+.lightning-button {
+    transition: all 0.2s ease;
+}
+
+.lightning-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add subtle hover effect to modal content */
+.slds-modal__body:hover {
+    background: #f9fafb;
+}
+
+/* Add focus ring for accessibility */
+.slds-modal__close:focus {
+    outline: 2px solid #0070d2;
+    outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slds-modal {
+        margin: 1rem;
+        max-width: calc(100vw - 2rem);
+    }
+}

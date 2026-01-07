@@ -1,0 +1,89 @@
+<template>
+  <section class="slds-card experience-card" aria-label="Work Experience">
+    <div class="slds-card__header slds-grid slds-grid_align-spread slds-p-around_small">
+      <header class="slds-media slds-media_center">
+        <div class="slds-media__figure">
+          <span class="slds-icon_container slds-icon-standard-work-order" title="Experience">
+            <svg class="slds-icon slds-icon_medium" aria-hidden="true">
+              <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#work_order"></use>
+            </svg>
+          </span>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-text-heading_medium">Work Experience</h2>
+          <p class="slds-text-body_small slds-text-color_weak">A quick tour through my recent roles</p>
+        </div>
+      </header>
+
+      <div class="controls">
+        <lightning-button-icon
+          icon-name="utility:left"
+          variant="border-filled"
+          size="small"
+          title="Previous"
+          onclick={handlePrev}
+          aria-label="Previous experience"
+          class="nav-btn prev"
+        >
+        </lightning-button-icon>
+        <lightning-button-icon
+          icon-name="utility:right"
+          variant="border-filled"
+          size="small"
+          title="Next"
+          onclick={handleNext}
+          aria-label="Next experience"
+          class="nav-btn next"
+        >
+        </lightning-button-icon>
+      </div>
+    </div>
+
+    <div class="slds-card__body slds-p-horizontal_none">
+      <div class="viewport" onkeydown={handleKeydown} tabindex="0" aria-roledescription="carousel" aria-label="Experience carousel">
+        <div
+          class="track"
+          onmousedown={onMouseDown}
+          onmousemove={onMouseMove}
+          onmouseup={onMouseUp}
+          onmouseleave={onMouseUp}
+          ontouchstart={onTouchStart}
+          ontouchmove={onTouchMove}
+          ontouchend={onTouchEnd}
+        >
+          <article
+            class={computeSlideClass}
+            aria-label={currentExperience.company}
+            aria-roledescription="slide"
+          >
+            <div class="slide slds-p-around_large">
+              <c-experience-card
+                company={currentExperience.company}
+                role={currentExperience.role}
+                location={currentExperience.location}
+                period={currentExperience.period}
+                impact={currentExperience.impact}
+                tags={currentExperience.tags}
+                points={currentExperience.points}
+              ></c-experience-card>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="dots slds-align_absolute-center slds-p-vertical_small" role="tablist" aria-label="Experience navigation">
+        <template for:each={experiences} for:item="exp" for:index="idx">
+          <button
+            key={exp.id}
+            class={computeDotClass}
+            role="tab"
+            aria-controls={exp.id}
+            data-index={idx}
+            onclick={handleDotClick}
+            title={exp.company}
+          ></button>
+        </template>
+      </div>
+    </div>
+  </section>
+</template>

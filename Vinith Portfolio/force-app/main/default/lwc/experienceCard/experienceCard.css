@@ -1,0 +1,103 @@
+:host {
+    display: block;
+}
+
+.slide-inner {
+    min-height: 300px;
+    padding: 1.5rem;
+}
+
+/* Slide header */
+.s-header .badge {
+    display: inline-block;
+    background: var(--lwc-colorBackgroundHighlight, #1b96ff10);
+    color: var(--lwc-colorTextLink, #0176d3);
+    border: 1px solid #0176d322;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    align-self: flex-start;
+}
+
+.s-header .company {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0.1rem 0;
+    align-self: flex-start;
+}
+
+.s-header .role {
+    margin: 0.1rem 0;
+    color: var(--lwc-colorTextDefault, #111827);
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+.s-header .location {
+    margin: 0.1rem 0 0.75rem 0;
+    color: var(--lwc-colorTextWeak, #6b7280);
+    font-size: 0.9rem;
+    align-self: flex-start;
+}
+
+/* Bullets */
+.bullets {
+    padding-left: 1.2rem;
+    line-height: 1.35rem;
+    margin-top: 0.5rem;
+}
+
+.bullets li {
+    margin-left: 0.25rem;
+}
+
+/* Meta & tags */
+/* Meta section */
+.meta {
+    background: #f8fafc;
+    border: 1px dashed var(--lwc-colorBorder, #e5e7eb);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+}
+
+.meta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.meta-label {
+    color: var(--lwc-colorTextWeak, #6b7280);
+    font-size: 0.8rem;
+}
+
+.meta-value {
+    color: var(--lwc-colorTextDefault, #0f172a);
+    font-weight: 600;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    font-size: 0.7rem;
+    border: 1px solid var(--lwc-colorBorder, #e5e7eb);
+    background: #ffffff;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    color: var(--lwc-colorTextWeak, #475569);
+}

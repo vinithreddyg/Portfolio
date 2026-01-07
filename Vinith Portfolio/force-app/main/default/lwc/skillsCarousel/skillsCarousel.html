@@ -1,0 +1,64 @@
+<template>
+    <div class="skills-container">
+
+        <div class="carousel-wrapper" onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave}>
+            <div class="carousel-track" style={carouselTrackStyle}>
+                <template if:true={hasSkillCategories}>
+                    <template for:each={skillCategories} for:item="category">
+                        <div 
+                            key={category.name} 
+                            class="carousel-slide slds-card slds-p-around_medium animate-on-scroll"
+                            data-animation="fade-up"
+                        >
+                            <div class="slds-card__header slds-grid">
+                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title slds-truncate" title={category.name}>
+                                            {category.name}
+                                        </h2>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="slds-card__body">
+                                <ul class="slds-list_horizontal slds-wrap slds-gutters_small">
+                                    <template for:each={category.skills} for:item="skill">
+                                        <li key={skill} class="slds-item">
+                                            <span class="slds-badge slds-badge_lightest">{skill}</span>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+                <template if:false={hasSkillCategories}>
+                    <div class="slds-card slds-p-around_medium">
+                        <div class="slds-card__body">
+                            <p>No skills available</p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <div class="carousel-indicators">
+                <template for:each={indicatorButtons} for:item="button">
+                    <button 
+                        key={button.index}
+                        class="indicator slds-button slds-button_icon"
+                        onclick={goToSlide}
+                        data-slide={button.index}
+                        aria-label={button.label}
+                    >
+                        <lightning-icon 
+                            icon-name={button.icon} 
+                            size="x-small" 
+                            alternative-text="Indicator"
+                        ></lightning-icon>
+                    </button>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>
