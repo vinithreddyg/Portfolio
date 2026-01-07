@@ -1,26 +1,13 @@
 <template>
     <!-- HERO -->
-    <section class="slds-card slds-p-around_xx-large hero hero--light">
+    <section class="slds-card slds-p-around_xx-large hero hero--light animate-on-scroll" data-animation="fade-up">
         <div class="slds-grid slds-wrap slds-grid_vertical-align-center">
-            <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
-                <p class="slds-text-title_caps slds-text-color_weak slds-m-bottom_x-small">WELCOME</p>
-                <h1 class="slds-text-heading_large slds-m-bottom_small">{title}</h1>
-                <p class="slds-text-body_regular slds-m-bottom_medium hero__tagline">{subtitle}</p>
-                <div class="slds-grid slds-gutters">
-                    <div class="slds-col slds-grow-none">
-                        <lightning-button variant="brand" label="View Projects" onclick={handleScrollToProjects}></lightning-button>
-                    </div>
-                    <div class="slds-col slds-grow-none">
-                        <lightning-button variant="neutral" label="Contact Me" onclick={handleScrollToContact}></lightning-button>
-                    </div>
-                </div>
-            </div>
             <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-m-top_medium slds-align_absolute-center">
                 <div class="hero__badgeRow">
-                    <span class="badge badge--mongo">MongoDB</span>
-                    <span class="badge badge--express">Express</span>
-                    <span class="badge badge--react">React</span>
-                    <span class="badge badge--node">Node</span>
+                    <span class="badge badge--mongo animate-on-scroll" data-animation="fade-left">Apex</span>
+                    <span class="badge badge--express animate-on-scroll" data-animation="fade-up">Ai Agents</span>
+                    <span class="badge badge--react animate-on-scroll" data-animation="fade-up">Flow</span>
+                    <span class="badge badge--node animate-on-scroll" data-animation="fade-right">LWC</span>
                 </div>
             </div>
         </div>
@@ -54,32 +41,17 @@
     <template if:true={showSkills}>
         <section class="slds-p-around_large section">
             <div class="slds-box slds-theme_default slds-p-around_large">
-                <div class="slds-grid slds-wrap slds-grid_align-spread slds-m-bottom_small">
-                    <h2 class="slds-text-heading_medium">Skills</h2>
-                    <div class="hero__badgeRow slds-m-top_x-small slds-hide_small">
-                        <span class="badge badge--mongo">MongoDB</span>
-                        <span class="badge badge--express">Express</span>
-                        <span class="badge badge--react">React</span>
-                        <span class="badge badge--node">Node</span>
-                    </div>
-                </div>
-                <ul class="slds-list_horizontal slds-has-dividers_right slds-wrap">
-                    <template for:each={skills} for:item="skill">
-                        <li key={skill} class="slds-item slds-m-right_medium slds-m-bottom_x-small">
-                            <span class="chip">{skill}</span>
-                        </li>
-                    </template>
-                </ul>
+                <c-skills-carousel skills={skillsJson}></c-skills-carousel>
             </div>
         </section>
     </template>
 
-    <!-- PROJECTS -->
+<!-- PROJECTS -->
     <template if:true={showProjects}>
         <section id="projects" class="slds-p-around_large section">
             <h2 class="slds-text-heading_medium slds-m-bottom_small">Projects</h2>
             <div class="slds-grid slds-wrap slds-gutters">
-                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small">
+                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small animate-on-scroll" data-animation="fade-up">
                     <div class="card">
                         <div class="card__header">
                             <span class="badge badge--react">LWC</span>
@@ -89,11 +61,11 @@
                             <p class="slds-text-body_small">A Salesforce LWC-based portfolio with MERN-inspired UI built on SLDS.</p>
                         </div>
                         <div class="card__footer">
-                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open"></lightning-button-icon>
+                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open" class="pulse"></lightning-button-icon>
                         </div>
                     </div>
                 </article>
-                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small">
+                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small animate-on-scroll" data-animation="fade-up" data-delay="0.1s">
                     <div class="card">
                         <div class="card__header">
                             <span class="badge badge--node">Apex</span>
@@ -103,11 +75,11 @@
                             <p class="slds-text-body_small">Robust REST integrations using Queueables and Platform Events.</p>
                         </div>
                         <div class="card__footer">
-                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open"></lightning-button-icon>
+                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open" class="pulse"></lightning-button-icon>
                         </div>
                     </div>
                 </article>
-                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small">
+                <article class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-around_x-small animate-on-scroll" data-animation="fade-up" data-delay="0.2s">
                     <div class="card">
                         <div class="card__header">
                             <span class="badge badge--mongo">DevOps</span>
@@ -117,7 +89,7 @@
                             <p class="slds-text-body_small">Git-based workflow with automated deployments and quality gates.</p>
                         </div>
                         <div class="card__footer">
-                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open"></lightning-button-icon>
+                            <lightning-button-icon icon-name="utility:link" alternative-text="Open" title="Open" class="pulse"></lightning-button-icon>
                         </div>
                     </div>
                 </article>
@@ -130,7 +102,15 @@
         <div class="cta slds-p-around_large">
             <h2 class="slds-text-heading_medium slds-m-bottom_small">Let’s work together</h2>
             <p class="slds-text-body_regular slds-m-bottom_medium">Have a project or role in mind? I’m open to opportunities.</p>
-            <lightning-button variant="brand-outline" label="Contact Me" onclick={handleScrollToContact}></lightning-button>
+            <lightning-button variant="brand-outline" label="Contact Me" onclick={handleOpenContactModal}></lightning-button>
         </div>
     </section>
+
+    <!-- Contact Modal -->
+    <c-contact-modal 
+        is-open={isContactModalOpen} 
+        phone-number="9084440882"
+        email-address="vinithreddygaddam@gmail.com"
+        onclose={handleCloseContactModal}>
+    </c-contact-modal>
 </template>

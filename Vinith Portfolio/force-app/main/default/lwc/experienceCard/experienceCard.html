@@ -1,0 +1,37 @@
+<template>
+    <lightning-card
+        title={company}
+        variant="base"
+        class="experience-slide"
+    >
+        <div class="slide-inner slds-grid slds-wrap slds-p-around_medium">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3">
+                <div class="s-header slds-m-bottom_small">
+                    <div class="badge slds-m-bottom_x-small">{period}</div>
+                    <h3 class="company slds-text-heading_small">{role}</h3>
+                    <p class="location slds-text-body_small">{location}</p>
+                </div>
+                <ul class="bullets slds-list_dotted slds-m-top_small">
+                    <template for:each={points} for:item="pt">
+                        <li key={pt} class="slds-item slds-m-vertical_x-small">{pt}</li>
+                    </template>
+                </ul>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-left_large slds-m-top_small">
+                <div class="meta slds-box slds-box_x-small slds-theme_default slds-p-around_small">
+                    <div class="meta-row slds-grid slds-grid_vertical slds-gutters_small slds-m-bottom_small">
+                        <div class="slds-col slds-size_1-of-1 slds-text-heading_small">Impact</div>
+                        <div class="slds-col slds-size_1-of-1">{impact}</div>
+                    </div>
+                    <div class="tag-list slds-m-top_small slds-grid slds-wrap slds-gutters_small slds-grid_vertical-align-center">
+                        <template for:each={tags} for:item="tg">
+                            <div key={tg} class="slds-col slds-size_1-of-1 slds-medium-size_auto slds-m-around_xxx-small">
+                                <span class="slds-badge slds-badge_lightest">{tg}</span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
