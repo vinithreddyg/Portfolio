@@ -1,19 +1,58 @@
 <template>
-    <div class="slds-col slds-size_1-of-1 slds-m-bottom_medium">
-        <section class="header-hero slds-box slds-p-around_none">
-            <!-- Decorative blobs -->
-            <span class="blob one" aria-hidden="true"></span>
-            <span class="blob two" aria-hidden="true"></span>
+    <header class="navbar">
+        <!-- LEFT: Logo and Name -->
+        <div class="left">
+            <div class="logo-circle">VR</div>
+            <span class="name">Vinith Reddy</span>
+        </div>
 
-            <!-- Content card -->
-            <div class="header-card slds-m-around_medium" role="region" aria-label="Profile Header">
-                <h2 class="header-title slds-text-heading_medium slds-m-bottom_small">
-                    Vinith Reddy Gaddam
-                </h2>
-                <p class="header-subtitle slds-text-body_regular">
-                    Senior Salesforce Consultant | Agentforce Enthusiast | Salesforce Certified
+        <!-- CENTER -->
+        <nav class="nav">
+            <a class="home-btn" href="javascript:void(0)" onclick={handleHomeClick}>Home</a>
+            <a class="home-btn" href="javascript:void(0)" onclick={handleAboutClick}>About</a>
+            <a href="javascript:void(0)" onclick={handleExperienceClick}>experience</a>
+            <a href="javascript:void(0)" onclick={handleCertificationsClick}>certifications</a>
+            <a class="contact-btn" href="javascript:void(0)" onclick={handleContactClick}>Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION WITH ABOUT CONTENT -->
+     <template if:true={aboutSection}>
+        <section class="hero">
+            <!-- LEFT CONTENT -->
+            <div class="content">
+                <h1>
+                    Hello, I’m<br />
+                    <span>Vinith Reddy</span>
+                </h1>
+
+                <p>
+                    I'm a <strong class="highlight">Senior Salesforce Developer</strong> with 6+ years of experience building AI-powered Agentforce solutions, Lightning Web Components, Apex, and scalable API integrations.
+                    Expert in Salesforce AI Agents, prompt-driven automation, backend architecture, and data-driven system optimization.
                 </p>
+
+                <button class="cta">Say Hello!</button>
+            </div>
+
+    <!-- RIGHT IMAGE CARD -->
+            <div class="image-wrapper">
+                <div class="image-card">
+                    <img src={agentforcePngUrl} alt="Profile Image" />
+                </div>
             </div>
         </section>
-    </div>
+    </template>
+
+    <template if:true={homePage}>
+        <c-portfolio-home></c-portfolio-home>
+    </template>
+    <template if:true={experiencePage}>
+        <c-portfolio-experience></c-portfolio-experience>
+    </template>
+    <template if:true={certificationsPage}>
+    <c-portfolio-certifications></c-portfolio-certifications>
+    </template>
+    <template if:true={contactPage}>
+        <c-contact-modal></c-contact-modal>
+    </template>
 </template>
